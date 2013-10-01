@@ -1,0 +1,436 @@
+<html lang="en-US">
+	<head>
+	<title>Musical Reporting Box</title>
+	<meta name="Description" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" href="favicon.ico" type="image/x-icon"> 
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+	<link rel="stylesheet" type="text/css" href="css/theme.css">
+	<link href="skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+		
+		
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.9.2/dropbox.min.js"></script>
+	<script type="text/javascript" src="https://www.dropbox.com/static/api/1/dropins.js" id="dropboxjs" data-app-key="qw20jrc5k1uf2tc"></script>
+	<script type="text/javascript" src="js/newbox.js"></script>
+	<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+	<script type="text/javascript" src="js/jplayer.playlist.min.js"></script>
+	<script type="text/javascript" src="libraries/RGraph.common.core.js"></script>
+	<script type="text/javascript" src="libraries/RGraph.bar.js"></script> 
+	<script type="text/javascript" src="libraries/RGraph.pie.js"></script> 
+	<script type="text/javascript" src="libraries/RGraph.hprogress.js"></script> 
+	<script type="text/javascript" src="libraries/RGraph.common.tooltips.js"></script>
+	<script type="text/javascript" src="libraries/RGraph.common.annotate.js"></script>
+	<script type="text/javascript" src="libraries/RGraph.common.effects.js"></script>
+	<script type="text/javascript" src="libraries/RGraph.common.dynamic.js"></script>
+	<script type="text/javascript" src="libraries/RGraph.common.key.js"></script>
+	<!--[if lt IE 9]><script src="http://javascript.www.rgraph.net/libraries/combined.html/excanvas.js"></script><![endif]-->
+
+	
+	
+	
+	<!-- Display Box Functions-->
+	<script type="text/javascript">
+	selIcon="html5";
+	function changeHeader(logoId,imgPos)
+		{
+		x=document.getElementById("header_text").childNodes;
+		for (i=0;i<x.length;i++)
+		  {
+		  if(x[i].nodeType==1)
+			{
+			x[i].style.display="none";
+			}
+		  }
+		x=document.getElementById("header_image").childNodes;
+		for (i=0;i<x.length;i++)
+		  {
+		  if(x[i].nodeType==1)
+			{
+			x[i].style.display="none";
+			}
+		  }
+
+		x=document.getElementById("header_icons_list").childNodes;
+		
+		document.getElementById("header_html5").style.backgroundPosition="0 0"
+		document.getElementById("header_multimedia").style.backgroundPosition="-32px 0"
+		document.getElementById("header_3d").style.backgroundPosition="-64px 0"
+		document.getElementById("header_offline").style.backgroundPosition="-96px 0"
+		document.getElementById("header_form").style.backgroundPosition="-128px 0"
+		document.getElementById("header_css3").style.backgroundPosition="-160px 0"
+		document.getElementById("header_poll").style.backgroundPosition="-192px 0"
+		
+						
+		bgText="header_text_"+logoId;
+		bgImage="header_image_"+logoId;
+		bgLogo="header_"+logoId;
+		document.getElementById(bgImage).style.display="block";
+		document.getElementById(bgText).style.display="inline";	
+		document.getElementById(bgLogo).style.backgroundPosition=imgPos+"px -28px"
+		}
+	function iconHover(logoId,imgPos)
+		{
+		bgLogo="header_"+logoId;
+		document.getElementById(bgLogo).style.backgroundPosition=imgPos+"px -28px"
+		}
+	function iconHoverOut(logoId,imgPos)
+		{
+		if (selIcon!=logoId)
+			{
+			bgLogo="header_"+logoId;
+			document.getElementById(bgLogo).style.backgroundPosition=imgPos+"px 0"
+			}
+		}
+	</script>
+
+	<!-- JPlayer Initialization -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+		playlist = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_N",
+		cssSelectorAncestor: "#jp_container_N"
+	}, [
+		{
+			title:"Cro Magnon Man",
+			artist:"The Stark Palace",
+			mp3:"http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg",
+			poster: "http://www.jplayer.org/audio/poster/The_Stark_Palace_640x360.png"
+		}
+	], {
+		playlistOptions: {
+			enableRemoveControls: true
+		},
+		swfPath: "http://mantispro.com/dropbox/MusicalReportingBox/js/Jplayer.swf",
+		supplied: "webm, webmv, ogv, m4v, mp4, oga, ogg, mp3, m4a, wav, webma, fla, flv",
+		smoothPlayBar: true,
+		keyEnabled: true,
+		audioFullScreen: true
+	});
+	});
+	</script>
+</head>
+
+<body>
+<div id="wrapper">
+
+<div id="spacer"></div>
+
+		<div id="top">
+			<div id="page-sidebar">
+				<ul id="main-nav">
+				
+					<li><a href="http://www.dropbox.com/home" class="selected">
+						<img src="img/sidebar_dbox.gif"/>&nbsp;Dropbox</a>
+					</li>
+					
+					<li><a href="http://www.dropbox.com/photos" id="photos-nav-item" class="">
+						<img src="img/sidebar_camera.gif"/>&nbsp;Photos</a>
+					</li>
+					<br>
+					
+					<li><a href="http://www.dropbox.com/share" class="">
+						<img src="img/sidebar_sharing.gif"/>&nbsp;Sharing</a>
+					</li>
+					
+					<li><a href="http://www.dropbox.com/links" class="">
+						<img src="img/sidebar_link.gif"/>&nbsp;Links</a>
+					</li>
+					
+					<li><a href="http://www.dropbox.com/events" class="">
+						<img src="img/sidebar_events.gif"/>&nbsp;Events</a>
+					</li>
+					
+					<li class="li_nav_item_get_started">
+						<a href="http://www.dropbox.com/gs" class="">
+						<img src="img/sidebar_cake.gif"/>&nbsp;Get Started</a>
+					</li>
+					
+					<li><a href="index.html" class="">
+						<img src="img/musical_notes.gif"/>&nbsp;<b><font color="black">MR Box</font></b></a>
+					</li>
+				</ul>
+			</div>	
+		
+		<div id="iconcontainer">
+			<div class="html5header">
+				<div id="header_icons"> 
+					<ul id="header_icons_list">
+						<li id="header_html5" onclick="changeHeader('html5','0');selIcon='html5'" onmouseover="iconHover('html5','0')" onmouseout="iconHoverOut('html5','0')" title="Play Music"></li>
+						<li id="header_multimedia" onclick="changeHeader('multimedia','-32');selIcon='multimedia';CreateChart2()" onmouseover="iconHover('multimedia','-32')" onmouseout="iconHoverOut('multimedia','-32')" title="File Types"></li>
+						<li id="header_3d" onclick="changeHeader('3d','-64');selIcon='3d';CreateChart3()" onmouseover="iconHover('3d','-64')" onmouseout="iconHoverOut('3d','-64')" title="File Composition"></li>
+						<li id="header_offline" onclick="changeHeader('offline','-96');selIcon='offline';CreateChart1()" onmouseover="iconHover('offline','-96')" onmouseout="iconHoverOut('offline','-96')" title="Space Remaining"></li>
+						<li id="header_form" onclick="changeHeader('form','-128');selIcon='form'" onmouseover="iconHover('form','-128')" onmouseout="iconHoverOut('form','-128')" title="Licensing"></li>
+						<li id="header_css3" onclick="changeHeader('css3','-160');selIcon='css3'" onmouseover="iconHover('css3','-160')" onmouseout="iconHoverOut('css3','-160')" title="Credits"></li> 
+						<li id="header_poll" onclick="changeHeader('poll','-192');selIcon='poll'" onmouseover="iconHover('poll','-192')" onmouseout="iconHoverOut('poll','-192')" title="Poll"></li> 
+					</ul>
+				</div>
+			</div>
+			</div>
+		</div>
+		
+		<div id="banner">
+			Musical Reporting Box 
+			<div id="welcome"></div>
+		</div>
+	
+		<!-- Display Box-->
+		<div id="main">
+			<div class="html5header">
+
+				<!--Title Boxes-->
+				<div id="header_text"> 
+					<div id="header_text_html5">
+						<div id="musiccontainer">
+								<div id="flash-audio" hidden>Please select only supported formats (mp3, wav, mp4, webmv, ogv, oga, m4v)</div>
+								<label for="db-chooser">Select multimedia files to play</label>
+								<button id="db-chooser" type="button" onclick="selectFiles()"><img src="img/folder_icon.png" /></button>
+								
+									
+									<div id="jp_container_N" class="jp-video jp-video-270p">
+			<div class="jp-type-playlist">
+				<div id="jquery_jplayer_N" class="jp-jplayer"></div>
+				<div class="jp-gui">
+					<div class="jp-video-play">
+						<a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+					</div>
+					<div class="jp-interface">
+						<div class="jp-progress">
+							<div class="jp-seek-bar">
+								<div class="jp-play-bar"></div>
+							</div>
+						</div>
+						<div class="jp-current-time"></div>
+						<div class="jp-duration"></div>
+						<div class="jp-controls-holder">
+							<ul class="jp-controls">
+								<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+								<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+								<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+								<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+								<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+								<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+								<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+								<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+							</ul>
+							<div class="jp-volume-bar">
+								<div class="jp-volume-bar-value"></div>
+							</div>
+							<ul class="jp-toggles">
+								<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
+								<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
+								<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+								<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+								<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+								<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+							</ul>
+						</div>
+						<div class="jp-title">
+							<ul>
+								<li></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="jp-playlist">
+					<ul>
+						<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+						<li></li>
+					</ul>
+				</div>
+				<div class="jp-no-solution">
+					<span>Update Required</span>
+					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+				</div>
+			</div>
+		</div>
+
+		
+		
+							</div>
+						</div>
+						
+					<div id="header_text_multimedia" style="display:none;">
+						<h2>What kind of file type takes up the most space?</h2>
+					</div>
+					
+					<div id="header_text_3d" style="display:none">
+						<h2>What is the file composition of my Dropbox?</h2>
+					</div>
+					
+					<div id="header_text_offline" style="display:none">
+						<h2>How much space have I used?</h2>
+					</div>
+					
+					<div id="header_text_form" style="display:none">
+						<h2>Which licenses apply?</h2>
+					</div>
+					
+					<div id="header_text_css3" style="display:none">
+						<h2>Who made this?</h2>
+					</div>
+					
+					<div id="header_text_poll" style="display:none">
+						<h2>Want to make this app better?</h2>
+						<!--iframe src="http://strawpoll.me/embed_1/48392/r" style="width: 630px; height: 450px; border: 0;">Loading poll...</iframe-->
+					</div>
+					
+				</div>
+				<!-- End Title Boxes -->
+			
+				<!-- Content Boxes -->
+				<div id="header_image">
+					<div id="header_image_html5">
+					<!-- Music Player needs no content, as it is placed in the title.  This was done so that its text is all the way at the top! -->
+					</div> 
+					<div id="header_image_multimedia">
+						<canvas id="PieGraph" width="630" height="250">[No canvas support]</canvas>
+					</div>
+					<div id="header_image_3d">
+						<canvas id="BarGraph" width="630" height="250">[No canvas support]</canvas>
+					</div>
+					<div id="header_image_offline">
+						<br><br>
+						<canvas id="ProgressBar1" width="630" height="80">[No canvas support]</canvas>
+						<canvas id="ProgressBar2" width="630" height="80">[No canvas support]</canvas>
+					</div>
+					<div id="header_image_form">
+						<div id="license">
+							Graphs constructed with <a href="http://www.rgraph.net" target="_blank">RGraph</a> under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution</a> license<br>	
+							<img src="img/creative_commons.png" /><br>
+							<a href="http://jquery.com/" target="_blank">jQuery</a> is Free, Open Source and licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a> license<br>
+							Media Player is developed using <a href="http://www.jplayer.org/" target="_blank">jPlayer</a> dual licensed under the <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a> and <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GPL</a> licenses<br>
+							<img src="img/osi-approved-license.png" /><br>
+							<img src="img/gpl.png" />
+							
+						</div>
+					</div>
+					<div id="header_image_css3">
+						<div id="credits">
+						- Credits - <br>
+						Backend Development: Yassine Elouri <br>
+						Frontend Development: Jordan Knopp <br>
+						Documentation / Presentations: Steve Yoss / Jeff Korn<br>
+						Programming: Jordan Knopp, Yassine Elouri <br>
+						Dropbox Integration: Yassine Elouri <br>
+						Graphic Design: Jordan Knopp <br>
+						User Interface: Jordan Knopp <br>
+						JPlayer Integration: Yassine Elouri <br>
+						RGraph Integration: Jordan Knopp <br>
+						Quality Assurance: Jordan Knopp <br>
+						Agile Tools Management: Jeff Korn <br>
+						Project Management: Jeff Korn <br>
+						Project Mismanagement: IBM JazzHub <br>
+						Meeting Facilitation: Jeff Korn / Steve Yoss<br>
+						User Experience: Jordan Knopp / Steve Yoss / Jeff Korn<br>
+						R&amp;D: Dropbox Team<br>
+						Product Development: Dropbox Team<br>
+						Product Architecture: Dropbox Team<br>
+						Inspiration: Professor Hilton, Hafsa, Ahmed, IST303 colleagues<br>
+						</div>
+					</div>
+					<div id="header_image_poll">
+						<iframe src="http://strawpoll.me/embed_1/48392" style="width: 630px; height: 450px; border: 0;">Loading poll...</iframe>
+					</div>
+					
+				</div>
+				<!-- End Content Boxes -->
+			</div>
+			<!-- End of div type -->
+		</div>
+		<!-- End Display Box -->
+	
+	<div id="footer">
+	   <i>Designed by:</i> Yassine Elouri, Jordan Knopp, Steve Yoss, Jeff Korn &nbsp;&nbsp; | &nbsp;&nbsp;
+	   Graphs constructed with <a href="http://www.rgraph.net" target="_blank">RGraph</a> under the Creative Commons Attribution license &nbsp;&nbsp; | &nbsp;&nbsp;
+	   <i>Version 1.28</i> ; <i>Release: 5/13/13</i>
+	</div>
+
+</div>		 
+<!-- End Wrapper -->
+		
+<!-- (R)Graph generating functions -->		
+<script>
+		CreateChart1 = function ()
+		{
+			RGraph.Clear($("#ProgressBar1")[0]);
+			RGraph.Clear($("#ProgressBar2")[0]);
+			RGraph.ObjectRegistry.Clear();
+			client.getUserInfo(function(error, userInfo) {
+			if (error) {
+				return showError(error); 
+			}
+				var hprogress1 = new RGraph.HProgress('ProgressBar1', userInfo.usedQuota*100 / userInfo.quota, 100)
+				.Set('units.post', '%')
+				.Set('chart.colors', ['Gradient(#ccf:blue)'])
+				.Set('tooltips', ['Space used: ' + Math.round(userInfo.usedQuota/1073741824 * 100) / 100 + ' GB'])
+				.Draw();
+				var hprogress2 = new RGraph.HProgress('ProgressBar2', [userInfo.privateBytes*100/userInfo.usedQuota, userInfo.sharedBytes*100/userInfo.usedQuota], 100)
+				.Set('units.post', '%')
+				.Set('chart.key', ['Private Space', 'Shared Space'])
+				.Set('key.colors', ['red', 'green'])
+				.Set('chart.colors', ['Gradient(#fcc:#fcc:red)', 'Gradient(white:white:white:green)'])
+				.Set('tooltips', ['Private space: ' + Math.round(userInfo.privateBytes/1073741824 * 100) / 100 + ' GB',
+					'Shared space: ' + Math.round(userInfo.sharedBytes/1073741824 * 100) / 100 + ' GB'])
+				.Draw();
+			});
+		}   
+	
+		CreateChart2 = function ()
+		{
+			RGraph.Clear($("#PieGraph")[0]);
+			RGraph.ObjectRegistry.Clear();
+			var audio = 0;
+			var video = 0;
+			var image = 0;
+			var document = 0;
+			for(var i = 0; i < stats.length; i++) {
+				if(stats[i].mimeType.match("^audio")) audio += stats[i].size
+				else if(stats[i].mimeType.match("^video")) video += stats[i].size
+				else if(stats[i].mimeType.match("^image")) image += stats[i].size
+				else document += stats[i].size
+			}
+			var pie = new RGraph.Pie('PieGraph', [audio, video, image, document])
+			.Set('tooltips', ['Audio ' + Math.round(audio/1048576 * 100) / 100 + ' MB',
+				'Video ' + Math.round(video/1048576 * 100) / 100 + ' MB',
+				'Images ' + Math.round(image/1048576 * 100) / 100 + ' MB',
+				'Documents ' + Math.round(document/1048576 * 100) / 100 + ' MB'])
+			.Set('chart.key', ['Audio', 'Video', 'Images', 'Documents'])
+			.Set('key.colors', ['#CC0000', '#FFCC00', '#99FF00', '#3333FF'])
+			.Set('chart.colors', ['#CC0000', '#FFCC00', '#99FF00', '#3333FF'])
+			.Draw();
+		}
+	
+		CreateChart3 = function ()
+		{
+			RGraph.Clear($("#BarGraph")[0]);
+			RGraph.ObjectRegistry.Clear();
+			var audio = 0;
+			var video = 0;
+			var image = 0;
+			var document = 0;
+			for(var i = 0; i < stats.length; i++) {
+				if(stats[i].mimeType.match("^audio")) audio++
+				else if(stats[i].mimeType.match("^video")) video++
+				else if(stats[i].mimeType.match("^image")) image++
+				else document++
+			}
+			var bar = new RGraph.Bar('BarGraph', [[audio],[video],[image],[document]])
+			.Set('labels', ['Audio','Video','Image','Document'])
+			.Set('labels.above', true)
+			.Set('colors', ['#318CBD'])
+			.Set('bevel', true)
+			.Set('grouping', 'stacked')
+			.Set('tooltips', ['Audio: ' + audio + ' files', 'Video: ' + video + ' files',
+				'Images: ' + image + ' files', 'Documents: ' + document + ' files'])
+			.Set('chart.gutter.left', 50)
+			.Draw();
+		}
+	
+</script>
+			
+</body>
+</html>
